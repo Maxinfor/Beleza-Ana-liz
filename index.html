@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #fce4ec; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Arial', sans-serif; }
+        .salon-card { background: white; border: 4px solid #ec4899; border-radius: 30px; padding: 20px; width: 90%; max-width: 400px; text-align: center; }
+        .tool-btn { background: #fbcfe8; border: 2px solid #ec4899; padding: 15px; border-radius: 20px; cursor: pointer; transition: 0.3s; font-size: 24px; }
+        .tool-btn:hover { background: #ec4899; transform: scale(1.05); }
+        #client-display { font-size: 50px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="salon-card">
+    <h1 class="text-2xl font-black text-pink-600 mb-4">SALÃO MÁGICO ✨</h1>
+    <div id="client-display">👩</div>
+    <div id="action-text" class="text-pink-800 font-bold mb-4">Escolha um serviço para a cliente!</div>
+    
+    <div class="grid grid-cols-2 gap-4">
+        <button class="tool-btn" onclick="fazerServico('Pintar Cabelo', '🎨')">🎨 Pintar</button>
+        <button class="tool-btn" onclick="fazerServico('Fazer Unhas', '💅')">💅 Unhas</button>
+        <button class="tool-btn" onclick="fazerServico('Corte', '✂️')">✂️ Corte</button>
+        <button class="tool-btn" onclick="fazerServico('Maquiagem', '💄')">💄 Make</button>
+    </div>
+    
+    <button onclick="resetar()" class="mt-6 text-pink-500 underline font-bold">Limpar Cliente</button>
+</div>
+
+<script>
+    function fazerServico(servico, emoji) {
+        document.getElementById('client-display').innerText = emoji;
+        document.getElementById('action-text').innerText = "Fazendo: " + servico + "... ✨";
+        
+        // Simula o tempo do serviço
+        setTimeout(() => {
+            alert("Sucesso! A cliente adorou o serviço de " + servico + "! 💖");
+            document.getElementById('client-display').innerText = "👩";
+            document.getElementById('action-text').innerText = "Escolha um novo serviço!";
+        }, 1500);
+    }
+
+    function resetar() {
+        document.getElementById('client-display').innerText = "👩";
+        document.getElementById('action-text').innerText = "Escolha um serviço para a cliente!";
+    }
+</script>
+</body>
+</html>
